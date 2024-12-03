@@ -31,6 +31,7 @@ repos:
       - id: check-yaml
       - id: debug-statements
       - id: end-of-file-fixer
+        exclude: ^inputs/.*\.(txt|dat)$
       - id: mixed-line-ending
       - id: trailing-whitespace
 
