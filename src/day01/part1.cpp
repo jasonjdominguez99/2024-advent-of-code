@@ -1,7 +1,6 @@
 #include "part1.hpp"
 #include "utils.hpp"
 
-#include <cassert>
 #include <cmath>
 #include <iostream>
 
