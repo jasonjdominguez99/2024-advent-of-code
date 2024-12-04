@@ -5,5 +5,5 @@
 
 namespace day01::part2
 {
-    int64_t solve(const std::vector<std::string>& input);
+    int64_t solve(const std::vector<std::string>& input, const size_t numDigits);
 }
