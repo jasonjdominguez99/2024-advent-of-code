@@ -11,3 +11,4 @@ add_compile_definitions(INPUT_DIR="${CMAKE_SOURCE_DIR}/inputs")
 # Add subdirectories
 add_subdirectory(src/common)
 add_subdirectory(src/day01)
+add_subdirectory(src/day02)
