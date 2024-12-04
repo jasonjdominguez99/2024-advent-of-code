@@ -1,9 +1,8 @@
 #pragma once
 
-#include <string>
 #include <vector>
 
 namespace day01::part2
 {
-    int64_t solve(const std::vector<std::string>& input, const size_t numDigits);
+    int solve(const std::vector<int>& leftList, const std::vector<int>& rightList);
 }

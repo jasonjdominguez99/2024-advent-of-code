@@ -1,14 +1,10 @@
 #include "part1.hpp"
-#include "utils.hpp"
 
 #include <cmath>
-#include <iostream>
 
-int64_t day01::part1::solve(const std::vector<std::string>& input, const size_t numDigits)
+int day01::part1::solve(const std::vector<int>& leftList, const std::vector<int>& rightList)
 {
-    const auto [leftList, rightList] = Utils::getSortedListsFromInput(input, numDigits);
-
-    int64_t sum = 0;
+    int sum = 0;
 
     for (size_t i = 0; i < leftList.size(); ++i)
     {
