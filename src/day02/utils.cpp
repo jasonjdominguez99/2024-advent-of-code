@@ -43,3 +43,25 @@ std::vector<int> Utils::parseLine(const std::string& line)
 
     return numbers;
 }
+
+bool Utils::areLevelsSafe(const std::vector<int>& levels)
+{
+    if (levels.size() < 2)
+    {
+        return false;
+    }
+
+    bool safe = true;
+    bool increasing = levels[1] - levels[0] > 0;
+    for (size_t i = 1; i < levels.size(); ++i)
+    {
+        const int diff = levels[i] - levels[i - 1];
+        if (!isSafe(diff, increasing))
+        {
+            safe = false;
+            break;
+        }
+    }
+
+    return safe;
+}
