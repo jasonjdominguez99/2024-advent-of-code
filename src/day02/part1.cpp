@@ -1,48 +1,5 @@
 #include "part1.hpp"
-
-#include <sstream>
-
-namespace
-{
-    const int MaxDiff = 3;
-
-    bool isSafe(const int diff, const bool increasing)
-    {
-        const int absDiff = std::abs(diff);
-
-        if (diff == 0 || absDiff > MaxDiff)
-        {
-            return false;
-        }
-
-        if (increasing && diff < 0)
-        {
-            return false;
-        }
-
-        if (!increasing && diff > 0)
-        {
-            return false;
-        }
-
-        return true;
-    }
-
-    std::vector<int> parseLine(const std::string& line)
-    {
-        std::vector<int> numbers;
-        numbers.reserve(line.size());
-
-        std::stringstream ss(line);
-        int               num;
-        while (ss >> num)
-        {
-            numbers.push_back(num);
-        }
-
-        return numbers;
-    }
-}
+#include "utils.hpp"
 
 int day02::part1::solve(const std::vector<std::string>& input)
 {
@@ -50,7 +7,7 @@ int day02::part1::solve(const std::vector<std::string>& input)
 
     for (const auto& line : input)
     {
-        std::vector<int> levels = parseLine(line);
+        std::vector<int> levels = Utils::parseLine(line);
 
         if (levels.size() < 2)
         {
@@ -62,7 +19,7 @@ int day02::part1::solve(const std::vector<std::string>& input)
         for (size_t i = 1; i < levels.size(); ++i)
         {
             const int diff = levels[i] - levels[i - 1];
-            if (!isSafe(diff, increasing))
+            if (!Utils::isSafe(diff, increasing))
             {
                 safe = false;
                 break;

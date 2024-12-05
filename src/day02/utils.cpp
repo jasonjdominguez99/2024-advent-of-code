@@ -1,32 +1,45 @@
 #include "utils.hpp"
 
+#include <sstream>
+
 namespace
 {
-    const size_t InputDataSpacing = 3;
+    const int MaxDiff = 3;
 }
 
-Utils::InputLists Utils::getSortedListsFromInput(const std::vector<std::string>& input, const size_t numDigits)
+bool Utils::isSafe(const int diff, const bool increasing)
 {
-    std::vector<int> leftList;
-    leftList.reserve(input.size());
+    const int absDiff = std::abs(diff);
 
-    std::vector<int> rightList;
-    rightList.reserve(input.size());
-
-    for (const auto& line : input)
+    if (diff == 0 || absDiff > MaxDiff)
     {
-        const std::string leftNumberText = line.substr(0, numDigits);
-        const int         leftNumber = std::stoi(leftNumberText);
-        leftList.push_back(leftNumber);
-
-        const size_t      startIndex = numDigits - 1 + InputDataSpacing;
-        const std::string rightNumberText = line.substr(startIndex);
-        const int         rightNumber = std::stoi(rightNumberText);
-        rightList.push_back(rightNumber);
+        return false;
     }
 
-    std::sort(leftList.begin(), leftList.end());
-    std::sort(rightList.begin(), rightList.end());
+    if (increasing && diff < 0)
+    {
+        return false;
+    }
 
-    return { leftList, rightList };
+    if (!increasing && diff > 0)
+    {
+        return false;
+    }
+
+    return true;
+}
+
+std::vector<int> Utils::parseLine(const std::string& line)
+{
+    std::vector<int> numbers;
+    numbers.reserve(line.size());
+
+    std::stringstream ss(line);
+    int               num;
+    while (ss >> num)
+    {
+        numbers.push_back(num);
+    }
+
+    return numbers;
 }

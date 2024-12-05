@@ -1,5 +1,6 @@
 add_library(day02_lib
     part1.cpp
+    utils.cpp
 )
 
 target_link_libraries(day02_lib
