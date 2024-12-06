@@ -1,69 +1,16 @@
 #include "part1.hpp"
+#include "utils.hpp"
 
 namespace
 {
     constexpr std::string_view SearchWord = "XMAS";
 
-    struct Position
-    {
-        size_t row;
-        size_t col;
-    };
-
-    enum class Direction
-    {
-        Up,
-        Down,
-        Left,
-        Right,
-        UpLeft,
-        UpRight,
-        DownLeft,
-        DownRight
-    };
-
-    constexpr std::array<Direction, 8> Directions = {
-        Direction::Up,
-        Direction::Down,
-        Direction::Left,
-        Direction::Right,
-        Direction::UpLeft,
-        Direction::UpRight,
-        Direction::DownLeft,
-        Direction::DownRight
-    };
-
-    constexpr std::pair<int, int> getIncrement(const Direction direction)
-    {
-        switch (direction)
-        {
-        case Direction::Up:
-            return std::make_pair(-1, 0);
-        case Direction::Down:
-            return std::make_pair(1, 0);
-        case Direction::Left:
-            return std::make_pair(0, -1);
-        case Direction::Right:
-            return std::make_pair(0, 1);
-        case Direction::UpLeft:
-            return std::make_pair(-1, -1);
-        case Direction::UpRight:
-            return std::make_pair(-1, 1);
-        case Direction::DownLeft:
-            return std::make_pair(1, -1);
-        case Direction::DownRight:
-            return std::make_pair(1, 1);
-        default:
-            return std::make_pair(0, 0);
-        }
-    }
-
-    bool findWord(const std::vector<std::string>& input, const Position startPosition, const Direction direction)
+    bool findWord(const std::vector<std::string>& input, const Utils::Position startPosition, const Utils::Direction direction)
     {
         const size_t startRow = startPosition.row;
         const size_t startCol = startPosition.col;
 
-        const auto [rowIncrement, colIncrement] = getIncrement(direction);
+        const auto [rowIncrement, colIncrement] = Utils::getIncrement(direction);
 
         if (startRow - (SearchWord.size() - 1) * rowIncrement < 0)
         {
@@ -110,7 +57,7 @@ int day04::part1::solve(const std::vector<std::string>& input)
                 continue;
             }
 
-            for (const auto direction : Directions)
+            for (const auto direction : Utils::Directions)
             {
                 numWordsFound += findWord(input, { row, col }, direction) ? 1 : 0;
             }
