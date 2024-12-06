@@ -1,5 +1,6 @@
 #include "inputreader.hpp"
 #include "part1.hpp"
+#include "part2.hpp"
 
 #include <iostream>
 
@@ -12,12 +13,14 @@ int main()
     std::vector<std::string> testInput = InputReader::readLines("day04", isTest);
 
     std::cout << "Part 1: " << day04::part1::solve(testInput) << std::endl;
+    std::cout << "Part 2: " << day04::part2::solve(testInput) << std::endl;
 
     std::cout << "---------REAL INPUT---------" << std::endl;
 
     std::vector<std::string> input = InputReader::readLines("day04");
 
     std::cout << "Part 1: " << day04::part1::solve(input) << std::endl;
+    std::cout << "Part 2: " << day04::part2::solve(input) << std::endl;
 
     return 0;
 }
