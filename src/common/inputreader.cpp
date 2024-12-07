@@ -6,14 +6,14 @@
 
 namespace
 {
-    std::string getInputPath(const std::string& day, bool test, const std::optional<std::string>& part = std::nullopt)
+    std::string getInputPath(const std::string& day, const bool test, const std::optional<std::string>& part = std::nullopt)
     {
         std::string filename = test ? "test_input" : "input";
         return std::string(INPUT_DIR) + "/" + day + "/" + filename + (part.has_value() ? part.value() : "") + ".txt";
     }
 }
 
-std::vector<std::string> InputReader::readLines(const std::string& day, bool test, const std::optional<std::string>& part)
+std::vector<std::string> InputReader::readLines(const std::string& day, const bool test, const std::optional<std::string>& part)
 {
     std::vector<std::string> lines;
     std::ifstream            file(getInputPath(day, test, part));
@@ -27,7 +27,7 @@ std::vector<std::string> InputReader::readLines(const std::string& day, bool tes
     return lines;
 }
 
-std::string InputReader::readFile(const std::string& day, bool test, const std::optional<std::string>& part)
+std::string InputReader::readFile(const std::string& day, const bool test, const std::optional<std::string>& part)
 {
     std::ifstream     file(getInputPath(day, test, part));
     std::stringstream buffer;
