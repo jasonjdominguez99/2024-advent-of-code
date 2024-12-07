@@ -49,6 +49,9 @@
         "unordered_map": "cpp",
         "variant": "cpp",
         "algorithm": "cpp",
-        "regex": "cpp"
+        "regex": "cpp",
+        "charconv": "cpp",
+        "deque": "cpp",
+        "unordered_set": "cpp"
     }
 }
