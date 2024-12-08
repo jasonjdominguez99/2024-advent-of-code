@@ -6,6 +6,8 @@
 
 int day05::part2::solve(const std::vector<std::string>& inputRules, const std::vector<std::string>& inputUpdates)
 {
+    // TODO: improve using list instead of vector & forward interating through the list
+    // TODO: improve by using more abstctions & better naming
     const std::unordered_map<int, std::unordered_set<int>> rules = Utils::parseRules(inputRules);
 
     int total = 0;
