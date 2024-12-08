@@ -8,6 +8,8 @@
 
 namespace Utils
 {
+    constexpr int MaxNumEntriesPerUpdateLine = 23;
+
     inline std::vector<int> splitToInts(const std::string& str, const int maxNumEntries)
     {
         std::vector<int> result;

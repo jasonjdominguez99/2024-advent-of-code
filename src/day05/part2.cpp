@@ -4,11 +4,6 @@
 #include <unordered_map>
 #include <unordered_set>
 
-namespace
-{
-    constexpr int MaxNumEntriesPerUpdateLine = 23;
-}
-
 int day05::part2::solve(const std::vector<std::string>& inputRules, const std::vector<std::string>& inputUpdates)
 {
     const std::unordered_map<int, std::unordered_set<int>> rules = Utils::parseRules(inputRules);
@@ -17,7 +12,7 @@ int day05::part2::solve(const std::vector<std::string>& inputRules, const std::v
 
     for (const auto& line : inputUpdates)
     {
-        std::vector<int> values = Utils::splitToInts(line, MaxNumEntriesPerUpdateLine);
+        std::vector<int> values = Utils::splitToInts(line, Utils::MaxNumEntriesPerUpdateLine);
 
         if (!Utils::isCorrectOrder(values, rules))
         {
